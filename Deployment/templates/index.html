@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Income Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="nav">
+        <a href="/"  class="active">Home</a> |
+        <a href="/about">About</a>
+    </div>
+
+    <h2>Predict Income Level</h2>
+
+    <form action="/predict" method="post">
+        {% for feature in feature_names %}
+            <label for="{{ feature }}">{{ feature.replace('_',' ').title() }}</label><br>
+
+            {% if feature in categorical_cols %}
+                <select name="{{ feature }}" id="{{ feature }}" required>
+                    <option value="" disabled selected>Choose…</option>
+                    {% for option in label_options[feature] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            {% else %}
+                <input type="number" name="{{ feature }}" id="{{ feature }}" step="any" required>
+                <small style="color: gray;">Input Number</small>
+            {% endif %}
+            <br><br>
+        {% endfor %}
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
