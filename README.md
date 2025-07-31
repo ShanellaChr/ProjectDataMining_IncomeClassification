@@ -42,12 +42,13 @@ Semua eksperimen machine learning dilakukan menggunakan Jupyter Notebook.
 Aplikasi Flask menyediakan antarmuka pengguna untuk mengisi data input dan melihat hasil prediksi pendapatan.
 
 ### ⚙️ Cara Menjalankan Aplikasi Flask
-
-1. **Aktifkan virtual environment (venv) dan jalankan web:**
+1. **Buat virtua environment (venv):**
+   python -m venv venv
+3. **Aktifkan virtual environment (venv) dan jalankan web:**
    venv\Scripts\activate
    pip install -r requirements.txt
    python app.py
-2. **Buka dan Akses Port**
+4. **Buka dan Akses Port**
 
 
 
